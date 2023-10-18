@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, session, redirect, flash
-from common.common import generate_jwt_token, generate_otp, send_email, token_required_for_user, token_required_for_manager,token_required_for_admin, is_valid_email
+from common.common import send_email
 from dbconnection import db
 from datetime import datetime
 from model import user, auth, role
