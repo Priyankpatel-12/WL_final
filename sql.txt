@@ -1,0 +1,59 @@
+CREATE SCHEMA `microservice` ;
+
+-- create table of role
+
+CREATE TABLE `microservice`.`tbl_role` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `role` VARCHAR(50) NOT NULL,
+  PRIMARY KEY (`id`));
+
+-- insert data into role table
+
+INSERT INTO `microservice`.`tbl_role` (`id`, `role`) VALUES ('1', 'user');
+INSERT INTO `microservice`.`tbl_role` (`id`, `role`) VALUES ('2', 'manager');
+INSERT INTO `microservice`.`tbl_role` (`id`, `role`) VALUES ('3', 'admin');
+
+-- ##create table of user.
+
+CREATE TABLE `microservice`.`tbl_user` (
+  `user_id` INT NOT NULL AUTO_INCREMENT,
+  `First_name` VARCHAR(200) NOT NULL,
+  `Last_name` VARCHAR(200) NOT NULL,
+  `Email` VARCHAR(45) NOT NULL,
+  `Phone` VARCHAR(15) NOT NULL,
+  `Password` VARCHAR(255) NOT NULL,
+  `role_id` INT NOT NULL,
+  PRIMARY KEY (`user_id`),
+  INDEX `role_id_idx` (`role_id` ASC),
+  CONSTRAINT `role_id`
+    FOREIGN KEY (`role_id`)
+    REFERENCES `microservice`.`tbl_role` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
+
+
+
+-- create auth TABLE
+
+
+CREATE TABLE `microservice`.`tbl_auth` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `user_id` INT NOT NULL,
+  `role_id` INT NOT NULL,
+  `token` VARCHAR(300) NOT NULL,
+  `token_exp` VARCHAR(45) NOT NULL,
+  `otp` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `user_id_idx` (`user_id` ASC),
+  INDEX `role_id_idx` (`role_id` ASC),
+  CONSTRAINT `fk_user_id`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `microservice`.`tbl_user` (`user_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_role_id`
+    FOREIGN KEY (`role_id`)
+    REFERENCES `microservice`.`tbl_user` (`role_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+);

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #3498db;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        .otp {
+            font-size: 24px;
+            font-weight: bold;
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>OTP for Account Activation</h2>
+        <p>Dear user,</p>
+        <p>Your OTP for account activation is:</p>
+        <p class="otp">{{otp}}</p>
+        <p>Please use this OTP to activate your account.</p>
+        <p>If you didn't request this, please ignore this email.</p>
+    </div>
+</body>
+</html>

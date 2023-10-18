@@ -1,0 +1,6 @@
+Flask==2.0.1
+Flask-Session==0.5.0
+PyJWT==2.1.0
+twilio==8.9.1
+otpauth==2.1.1
+validate-email-address==1.0.0
